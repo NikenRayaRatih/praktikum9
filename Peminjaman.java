@@ -1,38 +1,24 @@
-public class Peminjaman {
+public abstract class Peminjam implements UserLogin {
+ private boolean isLogin;
 
-  private Peminjam peminjam;
-  private Petugas petugas;
-  private Buku buku;
+ @Override
+ public void doLogin() {
+ System.out.println("Peminjam berhasil login");
+ isLogin = true;
+ }
 
-  public Peminjaman(Peminjam peminjam, Petugas petugas, Buku buku) {
+ @Override
+ public void doLogout() {
+ System.out.println("Peminjam berhasil logout");
+ isLogin = false;
+ }
 
-    if(peminjam.isLogin() == false) {
-      throw new IllegalStateException("peminjam harus login terlebih dahulu");
-    }
-
-    if(peminjam.getNamaPeminjam() == null) {
-      throw new NullPointerException("Nama Peminjam tidak boleh null");
-    }
-
-    if(peminjam.getKodePeminjam() == null) {
-      throw new NullPointerException("Kode Peminjam tidak boleh null");
-    }
-
-    this.peminjam = peminjam;
-    this.petugas = petugas;
-    this.buku = buku;
-  }
-
-  public Peminjam getPeminjam() {
-    return this.peminjam;
-  }
-
-  public Petugas getPetugas() {
-    return this.petugas;
-  }
-
-  public Buku getBuku() {
-    return this.buku;
-  }
-
+ @Override
+ public boolean isLogin() {
+ return isLogin;
+ }
+ public abstract void setKodePeminjam(String kodePeminjam);
+ public abstract String getKodePeminjam();
+ public abstract void setNamaPeminjam(String namaPeminjam);
+ public abstract String getNamaPeminjam();
 }

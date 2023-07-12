@@ -1,28 +1,27 @@
-public class Main {
+ public class Main {
+ public static void main(String[] args) {
 
-  public static void main(String[] args) {
+ Buku buku1 = new Buku("B001", "Pemrograman Java");
+ Buku buku2 = new Buku("B002", "Pemrograman C++");
+ BukuLuar buku3 = new BukuLuar("B003", "Harry Potter");
+ Petugas petugas1 = new Petugas("Totti", "P001");
+ Peminjam peminjam1 = new Mahasiswa();
+ peminjam1.setNamaPeminjam("Diescha");
+ peminjam1.setKodePeminjam("M001");
+ peminjam1.doLogin();
+ //peminjam1.doLogout();
+ 
+ try{
+ Peminjaman peminjaman1 = new Peminjaman(peminjam1, petugas1, buku1);
+ System.out.println("Peminjaman: " + peminjaman1.getPeminjam().getNamaPeminjam());
+ System.out.println("Petugas: " + peminjaman1.getPetugas().getNamaPetugas());
+ System.out.println("Buku: " + peminjaman1.getBuku().getNamaBuku());
+ System.out.println("Nama Buku: " + peminjaman1.getBuku().getNamaBuku());
+ } catch (Exception e) {
+ System.out.println("terjadi kesalahan: " + e.getMessage());
+ } finally {
+ System.out.println("Pemograman Selesai");
+ }
 
-    Buku buku1 = new Buku("B001", "Pemrograman Java");
-    BukuLuar buku2 = new BukuLuar("B002", "Harry Potter");
-    Petugas petugas1 = new Petugas("Alex", "P001");
-    Peminjam mhs1 = new Mahasiswa();
-    mhs1.setNamaPeminjam("Budi");
-    mhs1.setKodePeminjam("M001");
-
-    mhs1.doLogin();
-    // mhs1.doLogout();
-
-      try{
-          Peminjaman peminjaman = new Peminjaman(mhs1, petugas1, buku1);
-          
-          System.out.println("Nama Peminjam : " + peminjaman.getPeminjam().getNamaPeminjam());
-          System.out.println("Kode Peminjam : " + peminjaman.getPeminjam().getKodePeminjam());
-          System.out.println("Nama Petugas : " + peminjaman.getPetugas().getNamaPetugas());
-          System.out.println("Judul Buku : " + peminjaman.getBuku().getNamaBuku());
-      } catch(Exception e) {
-          System.out.println("Terjadi Kesalahan : " + e.getMessage());
-      } finally {
-          System.out.println("Program Selesai");
-      }
-    }
-  }
+ }
+}
